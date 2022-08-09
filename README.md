@@ -8,9 +8,9 @@ please consider the following tips:
 * AspectJ has been used for cross-cutting concern like logging 
 
 ### Guides
-The following guides illustrate how to use build docker image and run it as a container:
+The following guides illustrate how to build docker image and run it as a container:
 #### Build Image
 * Compile project
-* Replace the name of jarfile in the Dockerfile file if it changed
+* Replace the name of jarfile in the Dockerfile if it changed
 * Run the docker build image command from the project's root directory: docker build -t {tag_name} .
-* Run a container: run -d -p 8080:8080 --name {container_name} {tage_name}
+* Run a container: docker run -d -p 8080:8080 --name {container_name} {tage_name}
