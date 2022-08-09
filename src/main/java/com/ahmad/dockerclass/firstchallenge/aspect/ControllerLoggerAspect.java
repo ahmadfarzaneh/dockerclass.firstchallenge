@@ -12,8 +12,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class ControllerLoggerAspect {
 
-    private static final String Status= "Status: ";
-
     @Pointcut("execution(* com.ahmad.dockerclass.firstchallenge.controller.*.*(..))")
     public void Controllers() {
 
@@ -49,7 +47,6 @@ public class ControllerLoggerAspect {
     private void logResponse(Logger logger, ProceedingJoinPoint proceedingJoinPoint, Object result) {
         StringBuilder stringBuilder = new StringBuilder("Response: {");
         appendInNewLine(stringBuilder, getServiceName( proceedingJoinPoint));
-        appendInNewLine(stringBuilder, "Status: Ok ");
         appendParamInNewLine(stringBuilder, result);
         appendInNewLine(stringBuilder,"}");
         logger.info(stringBuilder.toString());
@@ -58,7 +55,6 @@ public class ControllerLoggerAspect {
     private void logException(Logger logger, ProceedingJoinPoint proceedingJoinPoint, Throwable exception) {
         StringBuilder stringBuilder = new StringBuilder("Response Exception: {");
         appendInNewLine(stringBuilder, getServiceName( proceedingJoinPoint));
-        appendInNewLine(stringBuilder, Status + "500");
         appendInNewLine(stringBuilder, "Message Exception:" + exception.getMessage());
         appendInNewLine(stringBuilder,"}");
         logger.error(stringBuilder.toString(), exception);
